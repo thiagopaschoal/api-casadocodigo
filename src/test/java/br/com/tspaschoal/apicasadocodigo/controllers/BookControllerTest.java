@@ -14,6 +14,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(controllers = BookController.class)
 public class BookControllerTest {
+	
+	private static final String BASE_RESOURCE = "/v1/books";
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -21,7 +23,9 @@ public class BookControllerTest {
 	@Test
 	@DisplayName("Deve retornar todos os livros já registrados")
 	public void testShouldReturnBooksRegistered() throws Exception {
-		mockMvc.perform(get("/books")).andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(3)))
+		mockMvc.perform(get(BASE_RESOURCE))
+				.andExpect(status().isOk())
+				.andExpect(jsonPath("$", hasSize(3)))
 				.andExpect(jsonPath("$[0]", equalTo("Inteligência Artificial e ChatGPT")))
 				.andExpect(jsonPath("$[1]", equalTo("Product Marketing Essencial")))
 				.andExpect(jsonPath("$[2]", equalTo("Transformação digital e cultura de produto")));

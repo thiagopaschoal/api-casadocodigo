@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("books")
+@RequestMapping("v1/books")
 public class BookController {
 	
-	private final List<String> booksMocked = List.of("Inteligência Artificial e ChatGPT", "Product Marketing Essencial", "Transformação digital e cultura de produto");
+	private final List<String> BOOKS_MOCKED = List.of("Inteligência Artificial e ChatGPT", "Product Marketing Essencial", "Transformação digital e cultura de produto");
 	
 	@GetMapping
 	public ResponseEntity<List<String>> books() {
-		return ResponseEntity.ok(booksMocked);
+		return ResponseEntity.ok(BOOKS_MOCKED);
 	}
 
 }
